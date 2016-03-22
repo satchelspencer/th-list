@@ -1,9 +1,18 @@
-define(['css!./list.css', 'jquery-plugins'], {
+define(['css!./list.css'], {
 	name : 'list',
 	html : "<div class='list'></div>",
 	init : function(view, options){
 		var _ = require('underscore');
 		var $ = require('jquery');
+
+		/* insert element at index in parent */
+		$.fn.insertAt = function(index, $parent) {
+		    return this.each(function() {
+		        if(index === 0) $parent.prepend(this);
+		        else if(index < $parent.children().length-1) $parent.children().eq(index - 1).after(this);
+		        else $parent.append(this);
+		    });
+		}
 
 		var group = options.group||options;
 		var item = options.item||"<div class='listItem'>";
