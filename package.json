@@ -1,0 +1,7 @@
+{
+  "name": "th-list",
+  "version": "0.0.0",
+  "description": "list view for thumos groups",
+  "main": "index.js",
+  "author": "satchel spencer"
+}
