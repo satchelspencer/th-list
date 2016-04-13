@@ -9,8 +9,12 @@ define(['css!./list.css'], {
 		$.fn.insertAt = function(index, $parent) {
 		    return this.each(function() {
 		        if(index === 0) $parent.prepend(this);
-		        else if(index < $parent.children().length-1) $parent.children().eq(index - 1).after(this);
-		        else $parent.append(this);
+		        else if(index < $parent.children().length-1){
+		            var sel = this;
+		            $parent.children().filter(function(){
+		                return !$(this).is(sel);
+		            }).eq(index - 1).after(this);
+		        }else $parent.append(this);
 		    });
 		}
 
