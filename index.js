@@ -70,7 +70,6 @@ define(['css!./list.css'], {
 		}
 
 		group.on('include', function(model, i){
-			if(model.name == 'some text') console.log(model, i);
 			var el = $(getItem(model, i)).addClass(model._id);
 			if(options.norewrite) el.triggerHandler('update', model);
 			el.insertAt(i, view);
