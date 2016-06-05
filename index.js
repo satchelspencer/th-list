@@ -70,20 +70,21 @@ define(['css!./list.css'], {
 		}
 
 		group.on('include', function(model, i){
+			if(model.name == 'some text') console.log(model, i);
 			var el = $(getItem(model, i)).addClass(model._id);
 			if(options.norewrite) el.triggerHandler('update', model);
 			el.insertAt(i, view);
 		})
 		group.on('update', function(model, i){
 			if(options.norewrite){
-				view.find('.'+model._id).triggerHandler('update', model);
+				view.children('.'+model._id).triggerHandler('update', model);
 			}else{
 				var el = $(getItem(model, i)).addClass(model._id);
-				view.find('.'+model._id).insertAt(i, view).replaceWith(el);
+				view.children('.'+model._id).insertAt(i, view).replaceWith(el);
 			}
 		})
 		group.on('exclude', function(model){
-			view.find('.'+model).remove();
+			view.children('.'+model).remove();
 		})			
 	}
 })
